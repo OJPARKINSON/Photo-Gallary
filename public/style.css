@@ -1,14 +1,15 @@
 body {
     display: grid;
+    background-color: gray;
     height: 100vh;
+    grid-row-gap: 30px;
     grid-template-areas: 
-    'header header header header'
-    'nav nav nav searches'
-    'photos photos photos photos'
+    'header header header'
+    'nav nav searches'
+    'photos photos photos'
 }
 
 header { 
-    background: 10%;
     color: black;
     font: helvetica;
 

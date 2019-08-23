@@ -6,6 +6,10 @@
     </head>
     <body>
         <header>Gallery</header>
-        
+        <nav> last 3 searches </nav>
+        <div class="photos">  
+            <img src="<%@db.execute("SELECT longUrl FROM photos;")%>">
+        </div>
+        <div class="searches"> search bar</div>
     </body>
 </html>
