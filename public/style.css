@@ -1,19 +1,15 @@
 body {
-    
+    display: grid;
+    height: 100vh;
+    grid-template-areas: 
+    'header header header header'
+    'nav nav nav searches'
+    'photos photos photos photos'
 }
 
-header {
+header { 
+    background: 10%;
+    color: black;
+    font: helvetica;
 
-}
-
-main {
-    
-}
-
-aside {
-   
-}
-
-section {
-   
 }
