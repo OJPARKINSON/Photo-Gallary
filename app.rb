@@ -1,4 +1,8 @@
 require 'sinatra'
+
+require "net/http"
+require "uri"
+require "json"
  
 class PhotoGallery < Sinatra::Base
  
@@ -7,7 +11,17 @@ class PhotoGallery < Sinatra::Base
   end
 
   get '/photos' do
+    fetch
     "You wish"
   end
  
+end
+
+def fetch
+    key = ENV["PIXABAY_API_KEY"]
+    terms = "flowers+summer"
+    request = URI("https://pixabay.com/api/?key=#{key}&q=#{terms}&image_type=photo")
+    response = Net::HTTP.get_response(request)
+    parsed = JSON.parse(response.body)
+    puts parsed
 end
