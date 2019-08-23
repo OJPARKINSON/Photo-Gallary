@@ -1,19 +1,16 @@
 body {
-    
+    display: grid;
+    background-color: gray;
+    height: 100vh;
+    grid-row-gap: 30px;
+    grid-template-areas: 
+    'header header header'
+    'nav nav searches'
+    'photos photos photos'
 }
 
-header {
+header { 
+    color: black;
+    font: helvetica;
 
-}
-
-main {
-    
-}
-
-aside {
-   
-}
-
-section {
-   
 }
