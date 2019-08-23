@@ -6,9 +6,12 @@
     </head>
     <body>
         <header>Gallery</header>
-        <nav> last 3 searches </nav>
+        <div> <%@db.execute('SELECT longUrl FROM photos LIMIT 1;') do |url| %>
+                <img src="<%=url[0]%>">
+            <%end%>
+         </div>
         <div class="photos">  
-            <img src="<%@db.execute("SELECT longUrl FROM photos;")%>">
+            
         </div>
         <div class="searches"> search bar</div>
     </body>

@@ -6,12 +6,17 @@ require "json"
 require "sqlite3"
  
 class PhotoGallery < Sinatra::Base
+
+    # @@db = SQLite3::Database.new("./database.db")
+    # @@db.execute("CREATE TABLE IF NOT EXISTS photos (id INTEGER PRIMARY KEY , longUrl CHAR , likes INTEGER , user_id INT);")
+
+
     get '/' do
+    fetch(1)
     erb :'index'
     end
 
     get '/photo' do
-    fetch(1)
     erb :'photo'
     end
  
