@@ -10,7 +10,7 @@ class PhotoGallery < Sinatra::Base
     erb :'index'
   end
 
-  get '/photos' do
+  get '/photos' do,
     fetch
     "You wish"
   end
@@ -18,9 +18,8 @@ class PhotoGallery < Sinatra::Base
 end
 
 def fetch
-    key = ENV["PIXABAY_API_KEY"]
     terms = "flowers+summer"
-    request = URI("https://pixabay.com/api/?key=#{key}&q=#{terms}&image_type=photo")
+    request = URI("https://pixabay.com/api/?key=#{ENV['PIXABAY_API_KEY']}&q=#{terms}&image_type=photo")
     response = Net::HTTP.get_response(request)
     parsed = JSON.parse(response.body)
     puts parsed
