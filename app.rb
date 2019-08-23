@@ -3,7 +3,7 @@ require 'sinatra'
 class PhotoGallery < Sinatra::Base
  
   get '/' do
-    "Hello, World!"
+    erb :'index'
   end
 
   get '/photos' do
