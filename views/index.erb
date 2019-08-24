@@ -3,25 +3,18 @@
 <html>
     <head>
         <link rel="stylesheet" href="/style.css">
-
     </head>
     <body>
         <div class="topnav">
             <a class="active" href="">Photo Gallery</a>
-            <a href="">Gallery</a>
             <a href="">Photo</a>
             <a href="">Photographer</a>
         </div>
-
-
         <div class="photoGallery"> 
-            <%@db.execute('SELECT longUrl FROM photos;') do |url| %>
-                <img src="<%=url[0]%>">
+            <%@db.execute('SELECT id, longUrl FROM photos;') do |id, url| %>
+                <a href="photo?id=<%=id%>"><img src="<%=url%>"></a>
             <%end%>
          </div>
-        <div class="photos">  
-            
-        </div>
-        <div class="searches"> search bar</div>
+        
     </body>
 </html>

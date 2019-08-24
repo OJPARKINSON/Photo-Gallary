@@ -7,12 +7,13 @@ require "sqlite3"
 class PhotoGallery < Sinatra::Base
 
     get '/' do
-    fetch
-    erb :'index'
+        fetch()
+        erb :'index'
     end
 
     get '/photo' do
-    erb :'photo'
+        fetch()
+        erb :'photo'
     end
  
 end
@@ -26,7 +27,7 @@ def fetch
     resp = JSON.parse(response.body)
 
     i = 0
-    while i < 10  do #Saves the first 10 photos in the database
+    while i < 9  do #Saves the first 9 photos in the database
         res = resp['hits'][i] #Breaks down the request array
         @db.execute("INSERT INTO photos(longUrl, likes, user_id) VALUES (?,?,?)",res['largeImageURL'],res['likes'],res['user_id'])
         i += 1

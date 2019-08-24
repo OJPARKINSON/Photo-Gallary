@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Photos</title>
+    </head>
+    <body>
+        <h1>Welcome to the photos page</h1>
+
+        <%@db.execute('SELECT id, longUrl FROM photos WHERE id=?;', params['id']) do |id, url| %>
+            <a href="photo?id=<%=id%>"><img src="<%=url%>"></a>
+        <%end%>
+    </body>
+</html>
