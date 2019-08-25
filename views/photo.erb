@@ -8,6 +8,6 @@
 
         <%@db.execute('SELECT id, longUrl FROM photos WHERE id=?;', params['id']) do |id, url| %>
             <a href="photo?id=<%=id%>"><img src="<%=url%>"></a>
-        <%end%>
+        <%end %>
     </body>
 </html>

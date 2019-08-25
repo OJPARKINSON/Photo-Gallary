@@ -5,17 +5,19 @@
         <link rel="stylesheet" href="/style.css">
     </head>
     <body>
-        <div class="topnav">
-            <a class="active" href="">Photo Gallery</a>
-            <a href="/photo?id=1">Photo</a>
-            <a href="">Photographer</a>
+        <div class="Header HeaderScrolled"> 
+          <div class="HeaderGroup">
+                <a href="/"><h1>Photo Gallery</h1></a>
+                <a class="Photos" href="/photo?id=1">Photo</a>
+                <a class="Photographer" href="/photographer">Photographer</a>
+            </div>
         </div>
         <div class="photoGallery"> 
-            <%@db.execute('SELECT id, longUrl, likes FROM photos;') do |id, url, likes| %>
+            <%@db.execute('SELECT id, longUrl, likes FROM photos LIMIT 27;') do |id, url, likes| %>
                 <div class="image">
-                <a href="photo?id=<%=id%>"><img src="<%=url%>"></a>
-                <p><%=likes%></p>
-            </div>
+                    <a href="photo?id=<%=id%>"><img src="<%=url%>"></a>
+                    <p><%=likes%></p>
+                </div>
             <%end%>
          </div>
     </body>
