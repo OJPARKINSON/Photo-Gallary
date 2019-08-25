@@ -2,11 +2,20 @@
 
 <html>
     <head>
-        <link rel= "stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/style.css">
+
     </head>
     <body>
-        <header>Gallery</header>
-        <div> <%@db.execute('SELECT longUrl FROM photos LIMIT 1;') do |url| %>
+        <div class="topnav">
+            <a class="active" href="">Photo Gallery</a>
+            <a href="">Gallery</a>
+            <a href="">Photo</a>
+            <a href="">Photographer</a>
+        </div>
+
+
+        <div class="photoGallery"> 
+            <%@db.execute('SELECT longUrl FROM photos;') do |url| %>
                 <img src="<%=url[0]%>">
             <%end%>
          </div>
