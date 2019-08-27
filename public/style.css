@@ -57,7 +57,7 @@ img {
 }
 
 .photoGallery {
-    padding-top: 8vw;
+    padding-top: 4vw;
     width: 85vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -78,6 +78,13 @@ img {
     grid-template-rows: 15vw 64vw;
     background-color: #676767;
 }
+form {
+    padding-top: 6vw;
+    margin: 0 auto;
+}
 .welcome {
     padding-top: 10vh;
+}
+.photographer {
+    padding-top: 12vh;
 }

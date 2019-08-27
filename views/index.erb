@@ -13,17 +13,14 @@
                 <a class="Photographer" href="/photographer">Photographer</a>
             </div>
         </div>
-        <div class="photoGallery"> 
-<<<<<<< HEAD
-            <%@db.execute('SELECT id, longUrl FROM photos LIMIT 27;') do |id, url| %>
+        <form action="/">
+            <input type="text" name="type">
+            <input type="submit">
+        </form> 
+        <div class="photoGallery">
+            <%@db.execute('SELECT id, longUrl, user_id, user FROM photos LIMIT 27;') do |id, url, user_id, user| %>
                 <div class="image">
-                    <a href="photo?id=<%=id%>"><img src="<%=url%>"></a>
-=======
-            <%@db.execute('SELECT id, longUrl, likes FROM photos LIMIT 27;') do |id, url, likes| %>
-                <div class="image">
-                    <a href="photo?id=<%=id%>"><img src="<%=url%>"></a>
-                    <p><%=likes%></p>
->>>>>>> master
+                    <p><%=user_id%> <%=user%></p><a href="photo?id=<%=id%>&type=<%=@type%>"><img src="<%=url%>"></a>
                 </div>
             <%end%>
          </div>
