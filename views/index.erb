@@ -18,7 +18,6 @@
             <input type="submit">
         </form> 
         <div class="photoGallery">
-
             <%@db.execute('SELECT id, longUrl, user_id, user FROM photos LIMIT 27;') do |id, url, user_id, user| %>
                 <div class="image">
                     <p><%=user_id%> <%=user%></p><a href="photo?id=<%=id%>&type=<%=@type%>"><img src="<%=url%>"></a>

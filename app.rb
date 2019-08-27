@@ -27,7 +27,7 @@ class PhotoGallery < Sinatra::Base
     not_found do
         erb :'404'
       end
- 
+
 end
 
 def fetch(type = "music")
@@ -36,7 +36,6 @@ def fetch(type = "music")
     @db.execute("CREATE TABLE IF NOT EXISTS photos (id INTEGER PRIMARY KEY , longUrl CHAR , user_id INT, user TEXT , previewURL CHAR);")
     request = URI("https://pixabay.com/api/?key=#{ENV['PIXABAY_API_KEY']}&q=#{type}&image_type=photo&orientation=horizontal")
     resp = JSON.parse(Net::HTTP.get_response(request).body)
-    
     i = 0
     while i < resp['hits'].count()  do #Saves the first 9 photos in the database
         res = resp['hits'][i]
