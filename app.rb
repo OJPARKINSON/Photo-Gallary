@@ -25,8 +25,8 @@ end
 
 def fetch(type = "vinyl")
     @db = SQLite3::Database.new("./database.db")
-    @db.execute("DROP TABLE photos") #Deletes the old data
-    @db.execute("CREATE TABLE IF NOT EXISTS photos (id INTEGER PRIMARY KEY , longUrl CHAR , user_id INT , previewURL CHAR);")
+    @db.execute("DROP TABLE photos") #Deletes the old dataå
+    @db.execute("CREATE TABLE IF NOT EXISTS photos (id INTEGER PRIMARY KEY , longUrl CHAR , user_id INT , previewURL CHAR);")å
     request = URI("https://pixabay.com/api/?key=#{ENV['PIXABAY_API_KEY']}&q=#{type}&image_type=photo&orientation=horizontal")
     response = Net::HTTP.get_response(request)
     resp = JSON.parse(response.body)

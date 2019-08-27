@@ -58,7 +58,7 @@ img {
 
 .photoGallery {
     padding-top: 8vw;
-    width: 90vw;
+    width: 85vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 2vw;
@@ -71,10 +71,13 @@ img {
     padding-left: 5vw;
     padding-right: 5vw;
     padding-bottom: 3vw;
-    background-color; #676767;
+    background-color: #676767;
 }
 
 .welcome img {
     grid-template-rows: 15vw 64vw;
-    background-color; #676767;
+    background-color: #676767;
+}
+.welcome {
+    padding-top: 10vh;
 }

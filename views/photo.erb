@@ -3,6 +3,7 @@
     <head>
         <title>Photos</title>
         <link rel="stylesheet" href="/pstyle.css">
+
     </head>
     <body>
         <div class="Header HeaderScrolled"> 
@@ -16,6 +17,7 @@
             <%@db.execute('SELECT id, previewURL FROM photos;') do |id, url| %>
                 <a href="photo?id=<%=id%>"><img src="<%=url%>"></a>
             <%end %>  
+
             <%@db.execute('SELECT id, longUrl FROM photos WHERE id=?;', @id_set) do |id, url| %>
                 <a href="photo?id=<%=id%>"><img src="<%=url%>"></a>
             <%end %>
