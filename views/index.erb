@@ -14,10 +14,9 @@
             </div>
         </div>
         <div class="photoGallery"> 
-            <%@db.execute('SELECT id, longUrl, likes FROM photos LIMIT 27;') do |id, url, likes| %>
+            <%@db.execute('SELECT id, longUrl FROM photos LIMIT 27;') do |id, url| %>
                 <div class="image">
                     <a href="photo?id=<%=id%>"><img src="<%=url%>"></a>
-                    <p><%=likes%></p>
                 </div>
             <%end%>
          </div>
