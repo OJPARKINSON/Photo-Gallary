@@ -7,29 +7,38 @@ require "sqlite3"
 class PhotoGallery < Sinatra::Base
 
     get '/' do
-    fetch
-    erb :'index'
+        fetch()
+        erb :'index'
     end
 
     get '/photo' do
-    erb :'photo'
-    end
+        fetch()
+        @id_set = params[:id]
+        erb :'photo'
+    end 
+
+    not_found do
+        'This is nowhere to be found.'
+      end
  
 end
 
-def fetch
+def fetch(type = "vinyl")
     @db = SQLite3::Database.new("./database.db")
     @db.execute("DROP TABLE photos") #Deletes the old data
-    @db.execute("CREATE TABLE IF NOT EXISTS photos (id INTEGER PRIMARY KEY , longUrl CHAR , likes INTEGER , user_id INT);")
-    request = URI("https://pixabay.com/api/?key=#{ENV['PIXABAY_API_KEY']}&q=music&image_type=photo")
+    @db.execute("CREATE TABLE IF NOT EXISTS photos (id INTEGER PRIMARY KEY , longUrl CHAR , user_id INT , previewURL CHAR);")
+    request = URI("https://pixabay.com/api/?key=#{ENV['PIXABAY_API_KEY']}&q=#{type}&image_type=photo&orientation=horizontal")
     response = Net::HTTP.get_response(request)
     resp = JSON.parse(response.body)
 
     i = 0
-    while i < 10  do #Saves the first 10 photos in the database
+    while i < 9  do #Saves the first 9 photos in the database
         res = resp['hits'][i] #Breaks down the request array
-        @db.execute("INSERT INTO photos(longUrl, likes, user_id) VALUES (?,?,?)",res['largeImageURL'],res['likes'],res['user_id'])
+        @db.execute("INSERT INTO photos(longUrl, user_id, previewURL) VALUES (?,?,?)",res['largeImageURL'],res['user_id'], res['previewURL'])
         i += 1
     end
 end
 
+def photo_page 
+
+end
