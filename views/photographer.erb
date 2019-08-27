@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Photos</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <div class="Header HeaderScrolled"> 
+          <div class="HeaderGroup">
+                <a href="/"><h1>Photo Gallery</h1></a>
+                <a class="Photos" href="/photo?id=1">Photo</a>
+                <a class="Photographer" href="/photographer">Photographer</a>
+            </div>
+        </div>
+        <div class="welcome"> 
+            <%@db.execute('SELECT id, previewURL FROM photos;') do |id, url| %>
+                <a href="photo?id=<%=id%>"><img src="<%=url%>"></a>
+            <%end %>  
+            <%@db.execute('SELECT id, longUrl FROM photos WHERE id=?;', @id_set) do |id, url| %>
+                <a href="photo?id=<%=id%>"><img src="<%=url%>"></a>
+            <%end %>
+        </div>
+    </body>
+</html>

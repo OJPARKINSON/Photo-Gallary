@@ -18,12 +18,12 @@ class PhotoGallery < Sinatra::Base
     end 
 
     not_found do
-        'This is nowhere to be found.'
+        erb :'404'
       end
  
 end
 
-def fetch(type = "vinyl")
+def fetch(type = "music")
     @db = SQLite3::Database.new("./database.db")
     @db.execute("DROP TABLE photos") #Deletes the old data
     @db.execute("CREATE TABLE IF NOT EXISTS photos (id INTEGER PRIMARY KEY , longUrl CHAR , user_id INT , previewURL CHAR);")
@@ -37,8 +37,4 @@ def fetch(type = "vinyl")
         @db.execute("INSERT INTO photos(longUrl, user_id, previewURL) VALUES (?,?,?)",res['largeImageURL'],res['user_id'], res['previewURL'])
         i += 1
     end
-end
-
-def photo_page 
-
 end
