@@ -12,12 +12,9 @@
                 <a class="Photographer" href="/photographer">Photographer</a>
             </div>
         </div>
-        <div class="welcome"> 
-            <%@db.execute('SELECT id, previewURL FROM photos;') do |id, url| %>
-                <a href="photo?id=<%=id%>"><img src="<%=url%>"></a>
-            <%end %>  
-            <%@db.execute('SELECT id, longUrl FROM photos WHERE id=?;', @id_set) do |id, url| %>
-                <a href="photo?id=<%=id%>"><img src="<%=url%>"></a>
+        <div class="photographer">
+            <%@db.execute('SELECT id, longUrl, user_id FROM photos;') do |id, url, user_id| %>
+                <p><%=user_id%></p><img src="<%=url%>">
             <%end %>
         </div>
     </body>

@@ -56,13 +56,20 @@ img {
 }
 
 .photoGallery {
-    padding-top: 8vw;
+    padding-top: 4vw;
     width: 85vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 2vw;
     margin: 0 auto;
 }
+form {
+    padding-top: 6vw;
+    margin: 0 auto;
+}
 .welcome {
     padding-top: 10vh;
+}
+.photographer {
+    padding-top: 12vh;
 }
