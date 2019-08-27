@@ -13,8 +13,9 @@ class PhotoGallery < Sinatra::Base
 
     get '/photo' do
         fetch()
+        @id_set = params[:id]
         erb :'photo'
-    end
+    end 
 
     not_found do
         'This is nowhere to be found.'
